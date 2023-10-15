@@ -1,8 +1,12 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Development from "./3d_Shapes/Development.jsx";
+import ProductDesign from "./3d_Shapes/ProductDesign.jsx";
+import WebDesign from "./3d_Shapes/WebDesign.jsx";
 
 const data = [
   "Web Design",
-  "Developement",
+  "Development",
   "Illustration",
   "Product Design",
   "Social Media",
@@ -16,7 +20,7 @@ const Section = styled.div`
 `;
 
 const Container = styled.div`
-  width: 1400px;
+  width: 1200px;// 1400
   display: flex;
   justify-content: space-between;
 `;
@@ -35,7 +39,7 @@ const List = styled.ul`
   `;
 
 const ListItem = styled.li`
-  font-size: 90px;
+  font-size: 80px;
   font-weight: bold;
   cursor: pointer;
   color: transparent;
@@ -73,6 +77,7 @@ const Right = styled.div`
 
 
 const Works = () => {
+  const [work, setWork] = useState("Web Design");
 
   return (
     <Section>
@@ -80,11 +85,16 @@ const Works = () => {
         <Left>
           <List>
             {data.map((item) => (
-                <ListItem key={item} text={item}>{item}</ListItem>
+                <ListItem key={item} text={item} onClick={() => setWork(item)}>{item}</ListItem>
             ))}
           </List>
         </Left>
-        <Right></Right>
+        <Right>
+          {(work === "Web Design") ? <WebDesign /> 
+          : (work === "Development") ? <Development /> 
+          : <ProductDesign /> 
+          }
+        </Right>
       </Container>
     </Section>
   )
