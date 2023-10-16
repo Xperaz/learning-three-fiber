@@ -23,12 +23,22 @@ const Container = styled.div`
   width: 1200px;// 1400
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px){
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const Left = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 768px){
+    padding: 20px;
+    justify-content: center;
+  }
 `;
 
 const List = styled.ul`
@@ -36,6 +46,7 @@ const List = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+
   `;
 
 const ListItem = styled.li`
@@ -45,6 +56,10 @@ const ListItem = styled.li`
   color: transparent;
   -webkit-text-stroke: 1px white;
   position: relative;
+
+  @media only screen and (max-width: 768px){
+    font-size: 24px;
+  }
 
   &:after{
     content: "${(props) => props.text}";
